@@ -48,15 +48,15 @@
         android:layout_height="100dp"/>
 
 
-    <Button
-        android:id="@+id/google_signIn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/background"
-        android:drawableLeft="@drawable/google"
-        android:elevation="8dp"
-        android:text="Sign In with Google"
-        android:textColor="#fff"/>
+        <Button
+            android:id="@+id/google_signIn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/background"
+            android:drawableLeft="@drawable/hou"
+            android:elevation="8dp"
+            android:text="Sign In with Google"
+            android:textColor="#fff" />
     </LinearLayout>
 
 
