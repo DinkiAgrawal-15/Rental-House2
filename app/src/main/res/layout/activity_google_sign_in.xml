@@ -24,13 +24,14 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
-        android:textStyle="bold|italic"
-        android:textSize="22sp"
-        android:text="Log In to Continue"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+        android:includeFontPadding="false"
+        android:shadowColor="#0E0E0E"
+        android:text="Signwith Google using Firebase!"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="14sp" />
+
 
     <LinearLayout
         android:layout_width="0dp"
