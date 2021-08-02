@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Rental House2</string>
+    <string name="login_text">Your data is protected\n &amp; we won\'t spam</string>
 </resources>
