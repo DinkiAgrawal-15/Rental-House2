@@ -3,7 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/StudioProjects/Rental-House2/app/src/main/res/layout/activity_google_sign_in.xml" value="0.11666666666666667" />
+        <entry key="..\:/StudioProjects/Rental-House2/app/src/main/res/drawable/stroke_1.xml" value="0.25" />
+        <entry key="..\:/StudioProjects/Rental-House2/app/src/main/res/layout/activity_google_sign_in.xml" value="0.25" />
       </map>
     </option>
   </component>
