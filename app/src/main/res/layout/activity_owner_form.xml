@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    android:padding="10dp"
+    android:padding="20dp"
     android:layout_height="match_parent"
     tools:context=".OwnerFormActivity">
     <LinearLayout
@@ -19,7 +19,7 @@
                 android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp"
                 android:layout_height="wrap_content"
                 android:text="GOING TO BE OWNER"
                 android:textColor="#000"
@@ -54,6 +54,7 @@
                 android:layout_height="wrap_content"
                 android:hint="WHATSAPP NUMBER"
                 android:ems="10"
+                android:maxLength="10"
                 android:inputType="number"
                 android:textSize="22sp" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -71,6 +72,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Phone"
+                android:maxLength="10"
                 android:ems="10"
                 android:inputType="text"
                 android:textSize="22sp" />
@@ -107,6 +109,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="75dp"
                 android:ems="10"
+                android:maxLength="6"
                 android:hint="PINCODE"
                 android:inputType="number"
                 android:textSize="22sp" />
@@ -279,6 +282,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="UPLOAD SNAPS"
+            android:onClick="snapsactivity"
             android:textStyle="bold"
             android:textAlignment="center"
             android:textSize="22sp"
@@ -286,5 +290,4 @@
             android:layout_marginTop="10dp"
             android:textColor="#F30404"/>
     </LinearLayout>
-
 </ScrollView>

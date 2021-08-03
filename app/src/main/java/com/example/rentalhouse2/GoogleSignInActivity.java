@@ -97,29 +97,23 @@ public class GoogleSignInActivity extends AppCompatActivity {
     }
 
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
-
-
         AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
         mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, new OnCompleteListener() {
                     @Override
                     public void onComplete(@NonNull Task task) {
                         if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
                             FirebaseUser user = mAuth.getCurrentUser();
                             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                             startActivity(intent);
 
-
                         } else {
                             Toast.makeText(GoogleSignInActivity.this, "Sorry auth failed.", Toast.LENGTH_SHORT).show();
-
-
                         }
-
-
                         // ...
                     }
                 });
     }
 }
+
+

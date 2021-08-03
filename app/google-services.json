@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "611222833825-v73g7e3lve2lfnogmcaet4i8p975qm8k.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.rentalhouse2",
+            "certificate_hash": "6e8178c456de522bb0ac496187e83d6c3c207d48"
+          }
+        },
+        {
           "client_id": "611222833825-8v4qbr1aui5nns6iehqt9eqhn1mgqd0p.apps.googleusercontent.com",
           "client_type": 3
         }

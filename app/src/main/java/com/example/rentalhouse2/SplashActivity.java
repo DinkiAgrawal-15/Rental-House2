@@ -13,23 +13,13 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         new Handler().postDelayed(new Runnable() {
-
-// Using handler with postDelayed called runnable run method
-
             @Override
-
             public void run() {
-
                 Intent i = new Intent(SplashActivity.this, GoogleSignInActivity.class);
-
                 startActivity(i);
-
                 // close this activity
-
                 finish();
-
             }
-
-        }, 5 * 1000);
+        }, 2 * 1000);
     }
 }

@@ -18,7 +18,7 @@
                 android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginStart="20dp"
+                android:layout_marginStart="50dp"
                 android:layout_height="wrap_content"
                 android:text="GOING TO BE TANENT"
                 android:textColor="#000"
@@ -34,7 +34,7 @@
             <ImageView
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                android:layout_marginStart="50dp"
+                android:layout_marginStart="20dp"
                 android:src="@drawable/ic_baseline_face_24" />
 
         </LinearLayout>
@@ -66,24 +66,6 @@
             tools:ignore="MissingConstraints"
             android:layout_marginTop="5dp">
             <EditText
-                android:id="@+id/tanent_email"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="EMAIL"
-                android:inputType="text"
-                android:textSize="22sp" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:textColorHint="#000"
-            tools:ignore="MissingConstraints"
-            android:layout_marginTop="5dp">
-            <EditText
                 android:id="@+id/tanent_phone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -91,8 +73,7 @@
                 android:ems="10"
                 android:maxLength="10"
                 android:inputType="number"
-                android:textSize="22sp"
-                />
+                android:textSize="22sp" />
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
@@ -130,6 +111,43 @@
                 android:inputType="textPostalAddress"
                 android:textSize="22sp" />
         </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:textColorHint="#000"
+        tools:ignore="MissingConstraints"
+        android:layout_marginTop="5dp">
+        <EditText
+            android:id="@+id/tanent_city"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="CITY"
+            android:ems="10"
+            android:maxLines="3"
+            android:inputType="textPostalAddress"
+            android:textSize="22sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:textColorHint="#000"
+        tools:ignore="MissingConstraints"
+        android:layout_marginTop="5dp">
+        <EditText
+            android:id="@+id/tanent_pincode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="PINCODE"
+            android:ems="10"
+            android:maxLength="6"
+            android:inputType="number"
+            android:textSize="22sp" />
+    </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:id="@+id/btn_register"
