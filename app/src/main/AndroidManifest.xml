@@ -12,23 +12,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.RentalHouse2">
+        <activity android:name=".OwnerFormActivity"></activity>
         <activity android:name=".EachHouseDetailActivity" />
         <activity android:name=".HouseListActivity" />
         <activity android:name=".OwnerImagelistActivity" />
         <activity android:name=".Internet_CheckActivity" />
         <activity android:name=".OwnerUploadImageActivity" />
         <activity android:name=".TanentFormActivity" />
-        <activity android:name=".OwnerFormActivity" />
-        <activity android:name=".GoogleSignInActivity">
+        <activity android:name=".GoogleSignInActivity" />
+        <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity">
-
-        </activity>
+        <activity android:name=".MainActivity"></activity>
     </application>
 
 </manifest>
