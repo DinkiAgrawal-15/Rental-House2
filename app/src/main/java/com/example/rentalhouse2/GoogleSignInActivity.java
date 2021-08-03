@@ -3,11 +3,9 @@ package com.example.rentalhouse2;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,15 +15,22 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Locale;
 
 public class GoogleSignInActivity extends AppCompatActivity {
     private GoogleSignInClient mGoogleSignInClient;
     private final static int RC_SIGN_IN = 123;
+    private FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
     private FirebaseAuth mAuth;
 
 
@@ -39,8 +44,6 @@ public class GoogleSignInActivity extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(intent);
         }
-
-
     }
 
 
@@ -82,10 +85,10 @@ public class GoogleSignInActivity extends AppCompatActivity {
 
         // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
         if (requestCode == RC_SIGN_IN) {
-            Task task = GoogleSignIn.getSignedInAccountFromIntent(data);
+            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             try {
                 // Google Sign In was successful, authenticate with Firebase
-                GoogleSignInAccount account = (GoogleSignInAccount) task.getResult(ApiException.class);
+                GoogleSignInAccount account = task.getResult(ApiException.class);
                 firebaseAuthWithGoogle(account);
             } catch (ApiException e) {
                 // Google Sign In failed, update UI appropriately
@@ -99,21 +102,63 @@ public class GoogleSignInActivity extends AppCompatActivity {
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
         AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
         mAuth.signInWithCredential(credential)
-                .addOnCompleteListener(this, new OnCompleteListener() {
-                    @Override
-                    public void onComplete(@NonNull Task task) {
-                        if (task.isSuccessful()) {
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                            startActivity(intent);
+                .addOnCompleteListener(this, (OnCompleteListener<com.google.firebase.auth.AuthResult>) task -> {
+                    if (task.isSuccessful()) {
+                        FirebaseUser user = mAuth.getCurrentUser();
+                        boolean newUser = task.getResult().getAdditionalUserInfo().isNewUser();
+                        if (newUser) {
+                            assert user != null;
+
+                            HashMap<String, Object> userData = new HashMap<>();
+                            userData.put("user_name", user.getDisplayName());
+                            userData.put("user_email", user.getEmail());
+                            userData.put("user_profile", user.getPhotoUrl());
+                            userData.put("user_phone", user.getPhoneNumber());
+
+
+                            DBQueries.user_name = user.getDisplayName();
+
+                            firebaseFirestore.collection("USERS").document(mAuth.getUid()).set(userData).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if (task.isSuccessful()) {
+                                        DBQueries.user_name = user.getDisplayName();
+
+
+                                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                        startActivity(intent);
+                                    }
+                                }
+                            }).addOnFailureListener(e -> {
+                                Toast.makeText(this, e.getMessage().toString(), Toast.LENGTH_SHORT).show();
+                            });
 
                         } else {
-                            Toast.makeText(GoogleSignInActivity.this, "Sorry auth failed.", Toast.LENGTH_SHORT).show();
+                            firebaseFirestore.collection("USERS").document(mAuth.getUid()).get()
+                                    .addOnCompleteListener(task1 -> {
+                                        DocumentSnapshot documentSnapshot = task1.getResult();
+
+                                        if (task1.isSuccessful()) {
+                                            //TODO retive user data
+                                            DBQueries.user_name = documentSnapshot.getString("user_name");
+
+                                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                            startActivity(intent);
+                                        }
+                                    }).addOnFailureListener(e -> {
+//TODO
+                            });
+
+
                         }
-                        // ...
+                    } else {
+                        Toast.makeText(GoogleSignInActivity.this, "Sorry auth failed.", Toast.LENGTH_SHORT).show();
                     }
+                    // ...
                 });
     }
+
+
 }
 
 

@@ -14,6 +14,7 @@ public class OwnerFormActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_owner_form);
+
         owner_whatsappnumber=findViewById(R.id.whatsapp_number_txt);
         owner_phone=findViewById(R.id.phone_number_txt);
         owner_address=findViewById(R.id.address_txt);

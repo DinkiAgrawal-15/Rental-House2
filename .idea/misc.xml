@@ -4,11 +4,19 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/StudioProjects/Rental-House2/app/src/main/res/drawable/stroke_1.xml" value="0.25" />
+        <entry key="..\:/StudioProjects/Rental-House2/app/src/main/res/layout/activity_each_house_detail.xml" value="0.209375" />
         <entry key="..\:/StudioProjects/Rental-House2/app/src/main/res/layout/activity_google_sign_in.xml" value="0.25" />
+        <entry key="..\:/StudioProjects/Rental-House2/app/src/main/res/layout/activity_house_list.xml" value="0.18666666666666668" />
+        <entry key="..\:/StudioProjects/Rental-House2/app/src/main/res/layout/activity_internet_check.xml" value="0.209375" />
+        <entry key="..\:/StudioProjects/Rental-House2/app/src/main/res/layout/activity_main.xml" value="0.209375" />
+        <entry key="..\:/StudioProjects/Rental-House2/app/src/main/res/layout/activity_owner_form.xml" value="0.209375" />
+        <entry key="..\:/StudioProjects/Rental-House2/app/src/main/res/layout/activity_owner_upload_image.xml" value="0.209375" />
+        <entry key="..\:/StudioProjects/Rental-House2/app/src/main/res/layout/activity_tanent_form.xml" value="0.18" />
+        <entry key="..\:/StudioProjects/Rental-House2/app/src/main/res/layout/item_example.xml" value="0.209375" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
