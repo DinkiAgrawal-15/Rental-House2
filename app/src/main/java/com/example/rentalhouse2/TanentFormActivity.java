@@ -56,13 +56,15 @@ public class TanentFormActivity<Public> extends AppCompatActivity {
     }
 
     public void insertdata() {
-        Map<String, String> items = new HashMap<>();
+        Map<String, Object> items = new HashMap<>();
         items.put("Name", tanent_name.getText().toString().trim());
-        items.put("Phonenumber", tanet_phone.getText().toString().trim());
+        items.put("Phonenumber", tanet_phone.getText().toString());
         items.put("Occupation", tanent_occup.getText().toString().trim());
         items.put("Address", tanent_address.getText().toString().trim());
         items.put("City", tanent_city.getText().toString().trim());
         items.put("Pincode", tanent_pincode.getText().toString().trim());
+
+
         firebaseFireStore.collection("Tanent").document(Objects.requireNonNull(FirebaseAuth.getInstance().getUid()))
                 //.orderBy("Phonenumber")
                 .set(items)
@@ -75,6 +77,7 @@ public class TanentFormActivity<Public> extends AppCompatActivity {
                         tanent_address.setText("");
                         tanent_city.setText("");
                         tanent_pincode.setText("");
+
                         Toast.makeText(getApplicationContext(), "Succesfully done", Toast.LENGTH_SHORT).show();
                         Intent i = new Intent(getApplicationContext(), HouseListActivity.class);
                         startActivity(i);
