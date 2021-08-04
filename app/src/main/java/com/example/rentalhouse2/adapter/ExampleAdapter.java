@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.rentalhouse2.R;
 import com.example.rentalhouse2.model.ExampleModel;
 
@@ -43,19 +44,23 @@ public class ExampleAdapter extends RecyclerView.Adapter<ExampleAdapter.viewHold
 
         private ImageView image;
         private TextView text;
+        private TextView text2;
 
         public viewHolder(@NonNull View itemView) {
             super(itemView);
 
             image = itemView.findViewById(R.id.ex_image);
             text = itemView.findViewById(R.id.ex_text);
+            text2=itemView.findViewById(R.id.ex_text2);
 
         }
 
         private void setData(ExampleModel exampleModel) {
-           // Glide.with(itemView.getContext()).load(exampleModel.getImage()).into(image);
+           //Glide.with(itemView.getContext()).load(exampleModel.getImage()).into(image);
             text.setText(exampleModel.getText());
+            text2.setText(exampleModel.getText1());
         }
+
     }
 
 }

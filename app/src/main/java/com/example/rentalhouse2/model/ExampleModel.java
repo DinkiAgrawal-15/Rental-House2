@@ -2,11 +2,12 @@ package com.example.rentalhouse2.model;
 
 public class ExampleModel {
 
-    private String image, text;
+    private String image, text,text1;
 
-    public ExampleModel(String image, String text) {
+    public ExampleModel(String image, String text, String text1) {
         this.image = image;
         this.text = text;
+        this.text1 = text1;
     }
 
     public String getImage() {
@@ -23,5 +24,13 @@ public class ExampleModel {
 
     public void setText(String text) {
         this.text = text;
+    }
+
+    public String getText1() {
+        return text1;
+    }
+
+    public void setText1(String text1) {
+        this.text1 = text1;
     }
 }
