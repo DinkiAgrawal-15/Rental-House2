@@ -123,6 +123,12 @@ public class GoogleSignInActivity extends AppCompatActivity {
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
                                         DBQueries.user_name = user.getDisplayName();
+                                       // DBQueries.user_profile= user.getPhotoUrl();
+                                        DBQueries.user_email = user.getEmail();
+                                        DBQueries.user_phone = user.getPhoneNumber();
+
+
+
 
 
                                         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
@@ -141,6 +147,9 @@ public class GoogleSignInActivity extends AppCompatActivity {
                                         if (task1.isSuccessful()) {
                                             //TODO retive user data
                                             DBQueries.user_name = documentSnapshot.getString("user_name");
+                                            DBQueries.user_email = documentSnapshot.getString("user_email");
+                                            DBQueries.user_profile = documentSnapshot.getString("user_profile");
+                                            DBQueries.user_phone = documentSnapshot.getString("user_phone");
 
                                             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                                             startActivity(intent);

@@ -16,12 +16,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
+
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.firebase.auth.FirebaseAuth;
-
-import java.util.Objects;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -30,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
     Button  btn_logout;
 
     private Dialog noInternetDialog;
-    private Dialog loadingDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,27 +43,22 @@ public class MainActivity extends AppCompatActivity {
         noInternetDialog.setContentView(R.layout.dialog_no_internet_connection);
         noInternetDialog.setCancelable(false);
         noInternetDialog.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        noInternetDialog.getWindow().setBackgroundDrawableResource(R.drawable.stroke_1);
+       // noInternetDialog.getWindow().setBackgroundDrawableResource(R.drawable.solid_1);
         ImageView noInternetImage = noInternetDialog.findViewById(R.id.no_internet_image);
-        Glide.with(getApplicationContext()).load(R.drawable.meter).into(noInternetImage);
-        checkInternetConnection();
+      //  Glide.with(getApplicationContext()).load(R.drawable.meter).into(noInternetImage);
+        checkInternetConnection(1000);
         //........................... no internet connection layout end ............................//
 
 
         GoogleSignInAccount signInAccount = GoogleSignIn.getLastSignedInAccount(this);
         if(signInAccount != null){
-            name.setText(String.format("Welcome %s", Objects.requireNonNull(signInAccount.getDisplayName()).toUpperCase()));
-            //name.setText(Objects.requireNonNull(signInAccount.getGivenName()).toLowerCase().trim());
+            name.setText(String.format("Welcome %s", signInAccount.getDisplayName().toUpperCase()));
             try{
-               Glide.with(this)
-                       .load(signInAccount.getPhotoUrl())
-                       .centerCrop()
-                       .into(profileImage);
+               // Glide.with(this).load(signInAccount.getPhotoUrl()).into(profileImage);
             }catch (NullPointerException e){
                 Toast.makeText(getApplicationContext(),"image not found",Toast.LENGTH_LONG).show();
             }
         }
-
         btn_logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -85,11 +77,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void tanent(View view) {
-        Intent i = new Intent(this,HouseListActivity.class);
+        Intent i = new Intent(this,TanentFormActivity.class);
         startActivity(i);
     }
 
-    private void checkInternetConnection() {
+    private void checkInternetConnection(int delay) {
+
 
         ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         final NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
@@ -104,8 +97,8 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     noInternetDialog.show();
                 }
-                checkInternetConnection();
+                checkInternetConnection(1000);
             }
-        }, 1000);
+        }, delay);
     }
 }

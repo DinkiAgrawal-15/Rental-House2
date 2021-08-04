@@ -50,12 +50,12 @@ public class TanentFormActivity<Public> extends AppCompatActivity {
         but_reg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //insertdata();
+                insertdata();
             }
         });
     }
 
-    /*public void insertdata() {
+    public void insertdata() {
         Map<String, Object> items = new HashMap<>();
         items.put("Name", tanent_name.getText().toString().trim());
         items.put("Phonenumber", tanet_phone.getText().toString());
@@ -89,7 +89,7 @@ public class TanentFormActivity<Public> extends AppCompatActivity {
                         Log.w("Error", e);
                     }
                 });
-    }*/
+    }
 
    /* public void check(){
         if (!TextUtils.isEmpty(tanent_name.getText())){
