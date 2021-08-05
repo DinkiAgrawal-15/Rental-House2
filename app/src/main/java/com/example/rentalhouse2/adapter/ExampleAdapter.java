@@ -56,7 +56,7 @@ public class ExampleAdapter extends RecyclerView.Adapter<ExampleAdapter.viewHold
         }
 
         private void setData(ExampleModel exampleModel) {
-           //Glide.with(itemView.getContext()).load(exampleModel.getImage()).into(image);
+           Glide.with(itemView.getContext()).load(exampleModel.getImage()).into(image);
             text.setText(exampleModel.getText());
             text2.setText(exampleModel.getText1());
         }
